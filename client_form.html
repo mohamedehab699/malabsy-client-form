@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>نموذج بيانات عميل صناعة الملابس</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo span {
+            font-size: 36px;
+            font-weight: bold;
+            color: #3a7ca5;
+            letter-spacing: 3px;
+            background: #e3f2fd;
+            padding: 10px 30px;
+            border-radius: 40px;
+            display: inline-block;
+        }
+        h2 {
+            text-align: center;
+            color: #3a7ca5;
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 500;
+        }
+        input, select, textarea, button {
+            font-size: 16px;
+            padding: 8px;
+            border-radius: 7px;
+            border: 1px solid #e0e0e0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 20px;
+        }
+        .color-pickers {
+            display: flex;
+            gap: 10px;
+        }
+        .img-upload-group {
+            display: flex;
+            gap: 18px;
+        }
+        .img-upload label {
+            margin-bottom: 4px;
+        }
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        button.print-btn {
+            background: #3a7ca5;
+            color: #fff;
+            border: none;
+            font-size: 18px;
+            padding: 10px 36px;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+        @media (max-width: 1000px) {
+            .container { width: 98%; padding: 10px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <span>لوجو ملبسي</span>
+        </div>
+        <h2>نموذج بيانات عميل لصناعة الملابس</h2>
+        <form id="client-form">
+            <div class="form-group">
+                <label for="clientName">اسم العميل</label>
+                <input type="text" id="clientName" name="clientName" required>
+            </div>
+            <div class="form-group">
+                <label for="contractDate">تاريخ التعاقد</label>
+                <input type="date" id="contractDate" name="contractDate" required>
+            </div>
+            <div class="form-group">
+                <label for="productName">اسم المنتج</label>
+                <input type="text" id="productName" name="productName" required>
+            </div>
+            <div class="form-group">
+                <label>الصنف أو الجنس</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="category" value="رجالي" required> رجالي</label>
+                    <label><input type="radio" name="category" value="حريمي"> حريمي</label>
+                    <label><input type="radio" name="category" value="أطفال"> أطفال</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>المقاسات المطلوبة</label>
+                <select name="size" required>
+                    <option value="">اختر المقاس</option>
+                    <option value="S">S صغير</option>
+                    <option value="M">M وسط</option>
+                    <option value="L">L كبير</option>
+                    <option value="XL">XL أكبر</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="material">الخامة المطلوبة</label>
+                <input type="text" id="material" name="material" placeholder="مثلاً: قطن، ليكرا ..." required>
+            </div>
+            <div class="form-group">
+                <label>الألوان المطلوبة للخامات</label>
+                <div class="color-pickers">
+                    <div>
+                        <label>لون 1</label>
+                        <input type="color" name="color1" value="#ffffff">
+                    </div>
+                    <div>
+                        <label>لون 2</label>
+                        <input type="color" name="color2" value="#ffffff">
+                    </div>
+                    <div>
+                        <label>لون 3</label>
+                        <input type="color" name="color3" value="#ffffff">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="supplements">المكملات (مثال: أزرار، تيكن ...)</label>
+                <input type="text" id="supplements" name="supplements">
+            </div>
+            <div class="form-group">
+                <label for="quantity">العدد المطلوب إنتاجه</label>
+                <input type="number" id="quantity" name="quantity" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="sampleDate">ميعاد تسليم العينة</label>
+                <input type="date" id="sampleDate" name="sampleDate" required>
+            </div>
+            <div class="form-group">
+                <label for="deliveryDate">ميعاد استلام المنتج</label>
+                <input type="date" id="deliveryDate" name="deliveryDate" required>
+            </div>
+            <div class="form-group img-upload-group">
+                <div class="img-upload">
+                    <label for="frontImage">صورة المنتج من الأمام</label>
+                    <input type="file" id="frontImage" name="frontImage" accept="image/*">
+                </div>
+                <div class="img-upload">
+                    <label for="backImage">صورة المنتج من الخلف</label>
+                    <input type="file" id="backImage" name="backImage" accept="image/*">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>شكل الكي والتعبئة</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="packaging" value="تطبيق"> تطبيق</label>
+                    <label><input type="checkbox" name="packaging" value="شماعة"> شماعة</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="deliveryPlace">مكان التسليم</label>
+                <input type="text" id="deliveryPlace" name="deliveryPlace" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit">حفظ البيانات</button>
+                <button type="button" class="print-btn" onclick="window.print()">طباعة النموذج</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
